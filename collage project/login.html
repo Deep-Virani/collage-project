@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styling.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="signup-box">
+      <form action="index.html" name="suForm" id="supform">
+        <img src="logo.jpg" alt="No image found" />
+        <input
+          type="text"
+          placeholder="Full Name"
+          id="Name"
+          onclick="resetBtn()"
+          maxlength="50"
+        />
+        <input
+          type="text"
+          placeholder="Email"
+          id="Email"
+          onclick="resetBtn()"
+        />
+        <input
+          type="password"
+          id="Pass"
+          placeholder="Password"
+          onclick="resetBtn()"
+          minlength="16"
+        />
+
+        <input
+          type="Submit"
+          id="submit-btn"
+          value="Sign Up"
+          onmouseover="mouseover()"
+        />
+      </form>
+    </div>
+    <script>
+      var a = 0;
+      function mouseover() {
+        const Name = document.forms["suForm"]["Name"].value;
+        const Email = document.forms["suForm"]["Email"].value;
+        const Pass = document.forms["suForm"]["Pass"].value;
+
+        const tick = document.querySelector("#check");
+
+        const Emailcheck = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        if (
+          (Name == "" ||
+            !Email.match(Emailcheck) ||
+            pass == "" ||
+            tick.hecked == false) &&
+          a == 0
+        ) {
+          buttonmoveLeft();
+          a = 1;
+          return false;
+        }
+
+        if (
+          (Name == "" ||
+            !Email.match(Emailcheck) ||
+            pass == "" ||
+            tick.hecked == false) &&
+          a == 1
+        ) {
+          buttonmoveRight();
+          a = 2;
+          return false;
+        }
+
+        if (
+          (Name == "" ||
+            !Email.match(Emailcheck) ||
+            pass == "" ||
+            tick.hecked == false) &&
+          a == 2
+        ) {
+          buttonmoveLeft();
+          a = 1;
+          return false;
+        } else {
+          document.getElementById("submit-btn").style.cursor = "pointer";
+          return false;
+        }
+      }
+
+      function buttonmoveLeft() {
+        const button = document.getElementById("submit-btn");
+        button.style.transform = "translateX(-0%)";
+      }
+
+      function buttonmoveRight() {
+        const button = document.getElementById("submit-btn");
+        button.style.transform = "translateX(-160%)";
+      }
+
+      function resetBtn() {
+        const button = document.getElementById("submit-btn");
+        button.style.transform = "translateX(0%)";
+      }
+    </script>
+  </body>
+</html>
